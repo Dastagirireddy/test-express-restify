@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular rest API demo</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body ng-cloak class="ng-cloak">
+  <div class="container" ng-controller="RestAPIController">
+  	<h1 class="text-center page-header">Contacts list App</h1>
+  	<div class="contacts text-center page-header">
+  		<form class="form-inline">
+  		  <div class="form-group">
+  		    <label class="sr-only" for="email">Email</label>
+  		    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="contact.email">
+  		  </div>
+  		  <div class="form-group">
+  		    <label class="sr-only" for="username">Username</label>
+  		    <input type="text" class="form-control" id="username" placeholder="Username" ng-model="contact.username">
+  		  </div>
+  		  <div class="form-group">
+  		    <label class="sr-only" for="phone">Phone</label>
+  		    <input type="tel" class="form-control" id="phone" placeholder="Phone" ng-model="contact.phone">
+  		  </div>
+  		  <button type="submit" class="btn btn-success" ng-click="add()">Add Contact</button>
+  		  <button type="submit" class="btn btn-info" ng-disabled="contact._id ? false:true" ng-click="update(contact._id)">Update</button>
+  		</form>
+  	</div>
+
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>EMAIL</th>
+                  <th>USERNAME</th>
+                  <th>PHONE</th>
+                  <th>ACTIONS</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="contact in contacts">
+                  <td>{{ contact._id }}</td>
+                  <td>{{ contact.email }}</td>
+                  <td>{{ contact.username }}</td>
+                  <td>{{ contact.phone }}</td>
+                  <td>
+                      <span class="glyphicon glyphicon-trash" ng-click="delete(contact._id, $index)"></span>
+                      <span class="sr-only"></span>
+                      <span class="glyphicon glyphicon-edit" ng-click="edit($index)"></span>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular.min.js"></script>
+<script type="text/javascript" src="angular-rest.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</html>

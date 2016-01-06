@@ -1,0 +1,17 @@
+{
+  "name": "test-express-restify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bluebird": "^3.1.1",
+    "express": "^4.13.3",
+    "express-restify": "^1.0.3",
+    "mongoose": "^4.3.4"
+  }
+}

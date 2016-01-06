@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express-restify test app</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1 class="text-center">Contact list app with express-restify</h1>
+        </header>
+        <section ng-controller="ContactController as cntcard">
+            <div class="alert text-center">
+                <form class="form-inline" ng-submit="cntcard.save()">
+                    <div class="form-group">
+                        <lable for="email">Email</lable>
+                        <input type="email" class="form-control" id="email" ng-model="cntcard.contact.email" placeholder="enter your email" />
+                    </div>
+                    <div class="form-group">
+                        <lable for="name">Name</lable>
+                        <input type="text" class="form-control" id="name" ng-model="cntcard.contact.name" placeholder="enter your name" />
+                    </div>
+                    <div class="form-group">
+                        <lable for="phone">Phone</lable>
+                        <input type="tel" class="form-control" id="phone" ng-model="cntcard.contact.phone" placeholder="enter your phone" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>_ID</th>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>PHONE</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cnt in cntcard.contacts">
+                        <td>{{ cnt._id }}</td>
+                        <td>{{ cnt.name }}</td>
+                        <td>{{ cnt.email }}</td>
+                        <td>{{ cnt.phone }}</td>
+                        <td>
+                            <button class="btn btn-danger" ng-click="cntcard.delete(cnt._id, $index)"><i class="fa fa-trash">Delete</i></button>
+                            <button class="btn btn-info" ng-click="cntcard.edit(cnt._id)"><i class="fa fa-pencil">Edit</i></button>
+                            <button class="btn btn-success" ng-click="cntcard.update(cnt._id, $index)"><i class="fa fa-life-saver">Update</i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-restify/angular-rest.js"></script>
+<script src="js/module.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+
+</html>

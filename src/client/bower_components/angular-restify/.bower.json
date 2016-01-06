@@ -1,0 +1,14 @@
+{
+  "name": "angular-restify",
+  "homepage": "https://github.com/Dastagirireddy/angular-rest",
+  "_release": "757e08d94d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "757e08d94d5e6cbaaa31a976012c9f2ad492b6af"
+  },
+  "_source": "git://github.com/Dastagirireddy/angular-rest.git",
+  "_target": "*",
+  "_originalSource": "angular-restify",
+  "_direct": true
+}
