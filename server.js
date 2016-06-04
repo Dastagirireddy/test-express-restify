@@ -5,7 +5,16 @@ var app = express();
 app.use(express.static(__dirname + '/src/client'));
 var REST = require('express-restify')(app);
 
-mongoose.connect('mongodb://localhost:27017/testdb');
+var MONGO_DB;
+var DOCKER_DB = process.env.DB_PORT;
+if ( DOCKER_DB ) {
+  MONGO_DB = DOCKER_DB.replace( 'tcp', 'mongodb' ) + '/testdb';
+} else {
+  MONGO_DB = process.env.MONGODB;
+}
+var retry = 0;
+console.log(MONGO_DB);
+mongoose.connect(MONGO_DB);
 
 var ContactSchema = new mongoose.Schema({
     name: String,
